@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Transaction } from '../../types/Transaction';
-import { data } from '../../libs/data';
-import { ApiListResponse } from '../../types/Api';
+import { Transaction } from '../../../types/Transaction';
+import { data } from '../../../libs/data';
+import { ApiListResponse } from '../../../types/Api';
 
 export default function handler(
 	req: NextApiRequest,

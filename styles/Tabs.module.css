@@ -1,0 +1,21 @@
+.tabs {
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tab {
+	border-radius: 8px 8px 0 0;
+	padding: 12px 24px;
+	margin-bottom: -1px;
+}
+
+.tab__active {
+	box-shadow: inset 0 -3px 0 #22BE54;
+	border-bottom: unset;
+	font-weight: 500;
+}
+
+.tabPanel {
+	margin-top: 24px;
+}

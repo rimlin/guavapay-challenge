@@ -1,0 +1,20 @@
+.breadcrumbs {
+	display: flex;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.breadcrumb__item {
+	color: #22BE54;
+}
+
+.breadcrumb__item__divider {
+	color: #B5B5B5;
+	margin: 0 5px;
+}
+
+.breadcrumb__item_current {
+	color: #6A6A6A;
+}

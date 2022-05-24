@@ -4,13 +4,15 @@ import Link from 'next/link';
 
 import { Transaction } from '../types/Transaction';
 import styles from '../styles/Transaction.module.css';
+import { useQueryParams } from '../hooks/useQueryParams';
+import { stringify } from 'query-string';
 
 interface TransactionInfoProps {
 	data: Transaction;
 }
 
 export const TransactionInfo = ({ data }: TransactionInfoProps) => {
-	const router = useRouter();
+	const [queryParams] = useQueryParams({});
 
 	return (
 		<article className={styles.transactionItem}>
@@ -22,7 +24,6 @@ export const TransactionInfo = ({ data }: TransactionInfoProps) => {
 				<dd>{data.transactionID}</dd>
 				<dt>Amount</dt>
 				<dd>
-					{' '}
 					{data.amount.toLocaleString(undefined, {
 						style: 'currency',
 						currency: data.currency
@@ -38,8 +39,14 @@ export const TransactionInfo = ({ data }: TransactionInfoProps) => {
 				</dd>
 				<dt>Card</dt>
 				<dd>
-					<Link href={`${router.asPath}/${data.cardID}`}>
-						{data.cardID}
+					<Link
+						href={{
+							pathname: `/transactions/${data.transactionID}/${data.cardID}`,
+							search: stringify(queryParams)
+						}}>
+						<a className={styles.transactionItem__link}>
+							{data.cardID}
+						</a>
 					</Link>
 				</dd>
 				<dt>Card Account</dt>

@@ -1,20 +1,26 @@
 import { DateTime } from 'luxon';
 import { useRouter } from 'next/router';
+import { stringify } from 'query-string';
+import Link from 'next/link';
 
 import { Transaction } from '../types/Transaction';
 import styles from '../styles/Transaction.module.css';
-import Link from 'next/link';
+import { useQueryParams } from '../hooks/useQueryParams';
 
 interface TransactionItemProps {
 	data: Transaction;
 }
 
 export const TransactionItem = ({ data }: TransactionItemProps) => {
-	const router = useRouter();
+	const [queryParams] = useQueryParams({});
 
 	return (
 		<article className={styles.transactionItem}>
-			<Link href={`${router.asPath}/${data.transactionID}`}>
+			<Link
+				href={{
+					pathname: `/transactions/${data.transactionID}`,
+					search: stringify(queryParams)
+				}}>
 				<a>
 					<div className={styles.transactionItem__head}>
 						<h2>{data.merchantInfo}</h2>

@@ -11,3 +11,19 @@
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 1rem;
 }
+
+.filters {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-end;
+	margin-bottom: 2rem;
+}
+
+.field {
+	display: inline-flex;
+	flex-direction: column;
+}
+
+.field label {
+	font-weight: bold;
+}

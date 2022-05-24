@@ -5,21 +5,20 @@ import { stringify } from 'query-string';
 
 import { BreadcrumbItem, Breadcrumbs } from '../../../components/Breadcrumbs';
 import { Layout } from '../../../components/Layout';
-import { Transaction } from '../../../types/Transaction';
 import { Loading } from '../../../components/Loading';
 import { Card } from '../../../types/Card';
 import { CardInfo } from '../../../components/CardInfo';
 import { useQueryParams } from '../../../hooks/useQueryParams';
+import Link from 'next/link';
 
 const fetcher = (url: string) => fetch(url).then(res => res.json());
 
-const CardPage: NextPage = () => {
+const Card: NextPage = () => {
+	const [queryParams] = useQueryParams({});
 	const router = useRouter();
 	const id = router.query?.id;
-	const cardId = router.query?.cardId;
-	const [queryParams] = useQueryParams({});
 
-	const { data, error } = useSWR<Card>(`/api/cards/${cardId}`, fetcher);
+	const { data, error } = useSWR<Card>(`/api/cards/${id}`, fetcher);
 
 	return (
 		<Layout>
@@ -27,24 +26,17 @@ const CardPage: NextPage = () => {
 				<BreadcrumbItem href="/">Home</BreadcrumbItem>
 				<BreadcrumbItem
 					href={{
-						pathname: `/transactions`,
+						pathname: `/cards`,
 						search: stringify(queryParams)
 					}}>
-					Transactions
+					Cards
 				</BreadcrumbItem>
 				<BreadcrumbItem
 					href={{
-						pathname: `/transactions/${id}`,
+						pathname: `/cards/${id}`,
 						search: stringify(queryParams)
 					}}>
 					{id}
-				</BreadcrumbItem>
-				<BreadcrumbItem
-					href={{
-						pathname: `/transactions/${id}/${cardId}`,
-						search: stringify(queryParams)
-					}}>
-					{cardId}
 				</BreadcrumbItem>
 			</Breadcrumbs>
 
@@ -61,4 +53,4 @@ const CardPage: NextPage = () => {
 	);
 };
 
-export default CardPage;
+export default Card;

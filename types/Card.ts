@@ -11,3 +11,12 @@ export interface Card {
 }
 
 export type CardStatus = 'active' | 'blocked';
+
+export interface CardPageParams {
+	page: string;
+	size_of_page: string;
+	card_id?: string;
+	card_account?: string;
+	currency?: string;
+	status?: string;
+}

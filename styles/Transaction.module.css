@@ -37,3 +37,11 @@
 	font-size: 0.875rem;
 	line-height: 110%;
 }
+
+.transactionItem__link {
+	color: #22BE54;
+}
+
+.transactionItem__link:hover {
+	text-decoration: underline;
+}

@@ -21,3 +21,33 @@ main {
 	padding: 20px 4rem;
 	box-sizing: border-box;
 }
+
+dl {
+	margin: 0 0 20px 0;
+}
+
+dt {
+	margin: 0;
+	padding: 5px 0;
+	width: 150px;
+	float: left;
+	clear: both;
+	color: #808d9a;
+}
+
+dt:after {
+	content: ":";
+}
+
+dd {
+	margin: 0 0 0 150px;
+	padding: 5px 0;
+}
+
+dd a {
+	color: #22BE54;
+}
+
+dd a:hover {
+	text-decoration: underline;
+}

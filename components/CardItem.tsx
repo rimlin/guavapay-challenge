@@ -1,19 +1,24 @@
-import { useRouter } from 'next/router';
+import { stringify } from 'query-string';
+import Link from 'next/link';
 
 import styles from '../styles/Card.module.css';
-import Link from 'next/link';
 import { Card } from '../types/Card';
+import { useQueryParams } from '../hooks/useQueryParams';
 
 interface CardItemProps {
 	data: Card;
 }
 
 export const CardItem = ({ data }: CardItemProps) => {
-	const router = useRouter();
+	const [queryParams] = useQueryParams({});
 
 	return (
 		<article className={styles.cardItem}>
-			<Link href={`${router.asPath}/${data.cardID}`}>
+			<Link
+				href={{
+					pathname: `/cards/${data.cardID}`,
+					search: stringify(queryParams)
+				}}>
 				<a>
 					<div className={styles.cardItem__info}>
 						<div className={styles.cardItem__info__details}>

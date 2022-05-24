@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import styles from '../styles/Pagination.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useQueryParams } from '../hooks/useQueryParams';
 
 type Page = number | typeof pageSkip;
 
@@ -59,6 +60,7 @@ export const Pagination = ({
 	sizeOfPage
 }: PaginationProps) => {
 	const [pages, setPages] = useState<Page[]>([]);
+	const [queryParams] = useQueryParams({});
 
 	useEffect(() => {
 		const lastPage = Math.ceil(total / sizeOfPage);
@@ -123,6 +125,7 @@ export const Pagination = ({
 								<Link
 									href={{
 										query: {
+											...queryParams,
 											page: currPage,
 											size_of_page: sizeOfPage
 										}

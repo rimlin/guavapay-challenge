@@ -9,3 +9,13 @@ export interface Transaction {
 	transactionDate: string;
 	merchantInfo: string;
 }
+
+export interface TransactionPageParams {
+	page: string;
+	size_of_page: string;
+	card_id?: string;
+	card_account?: string;
+	amount?: string;
+	currency?: string;
+	date?: string;
+}
